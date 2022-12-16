@@ -13,7 +13,8 @@ body {
   flex-direction: column;
   margin: 0;
   position: absolute;
-  top: 50%;
+  top: 21%;
+  left:-21%;
   -ms-transform: translateY(-50%);
   transform: translateY(-50%);
   
