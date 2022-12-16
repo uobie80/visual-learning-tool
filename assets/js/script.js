@@ -30,7 +30,7 @@ function handleSearchFormSubmit(event) {
 
   if (!searchInputVal) {
     document.querySelector("#message").textContent =
-      "You need a search input value!";
+      "Please Enter a word!";
     return;
   }
   search(searchInputVal);
