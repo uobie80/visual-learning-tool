@@ -1,4 +1,4 @@
-var APIKey = "22vwvUYuN4pRHPAeG9YOHXN8r48eEaWa"
+var APIKey = "22vwvUYuN4pRHPAeG9YOHXN8r48eEaWa";
 
 const settings = {
 	"async": true,
