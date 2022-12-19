@@ -2,11 +2,7 @@
 body {
   min-height: 100vh;
 }
-/*positioning the card container and setting the minimum height relative to parent*/
-.custom-card {
-  position: relative;
-  min-height: 100vh;
-}
+
 /*aligning the contents in the card container to the centre of the page*/
 .custom-align {
   display: flex;
