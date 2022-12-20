@@ -1,4 +1,6 @@
 var APIKey = "22vwvUYuN4pRHPAeG9YOHXN8r48eEaWa";
+var giphyAPIKey = "04MTGqYDpxd8HuhMqVSJBUSZxRc5dOUp"; //Giphy API key
+
 
 const settings = {
 	"async": true,
@@ -14,15 +16,49 @@ const settings = {
 	}
 };
 
+/*
 $.ajax(settings).done(function (response) {
 	console.log(response);
 });
- 
+*/
+
+/*
 object.onclick = function(){
     getData  
 }
+*/
 
 var searchFormEl = document.querySelector("#search-form");
+
+
+search = function (w) {
+
+  var gifs = getGiphys(w);
+
+}
+
+getGiphys = function (searchWord) {
+ 
+  /* 
+    This function uses the Giphy API to fetch gifs related to search term
+  */
+
+  window.event.preventDefault();
+
+  var requestUrl = "https://api.giphy.com/v1/gifs/search?api_key=" + giphyAPIKey + "&q=" + searchWord + "&limit=1&offset=0&rating=g&lang=en"
+  var gifs = null;
+  
+  fetch(requestUrl)
+  .then(function (response){
+    return response.json();
+  })
+  .then(function (data) {
+    console.log(data);
+    gifs = data;
+  })
+
+   return gifs;
+}
 
 //This function prints results on the html page
 function printResults(resultObj) {
