@@ -38,6 +38,24 @@ search = function (w) {
   var synonyms = getWordSynonym(w);
   var antonyms = getWordAntonym(w);
 
+   //setting up divs to hold the results content
+   var row = document.querySelector(".row");
+
+   var resultBody = document.createElement("div");
+   resultBody.classList.add(
+     "card-body",
+     "bg-light",
+     "text-dark",
+     "col",
+     "s12",
+     "m12",
+     "l8"
+   );
+   row.append(resultBody);
+ 
+   var titleEl = document.createElement("h3");
+   titleEl.textContent = resultObj.title;
+
 }
 
 getGiphys = function (searchWord) {
@@ -53,11 +71,17 @@ getGiphys = function (searchWord) {
   
   fetch(requestUrl)
   .then(function (response){
+    if (response.status !== 200) {
+      document.getElementById('message').textContent = 'unable to find the word!';
+    }
     return response.json();
   })
   .then(function (data) {
     console.log(data);
     gifs = data.url;
+  })
+  .catch(function (error) {
+    document.getElementById('message').textContent = 'unable to find the word!';
   })
 
    return gifs;
@@ -74,10 +98,16 @@ var getWordDefinition = function(searchWord) {
   
   fetch('https://wordsapiv1.p.rapidapi.com/words/' + searchWord + '/definitions', options)
     .then(function (response) {
+      if (response.status !== 200) {
+        document.getElementById('message').textContent = 'unable to find the word!';
+      }
       return response.json();
     })
     .then(function (data) {
       console.log(data);
+    })
+    .catch(function (error) {
+      document.getElementById('message').textContent = 'unable to find the word!';
     });
 } 
 //This function gets the synonyms
@@ -92,10 +122,16 @@ var getWordSynonym = function(searchWord) {
   
   fetch('https://wordsapiv1.p.rapidapi.com/words/' + searchWord + '/synonyms', options)
     .then(function (response) {
+      if (response.status !== 200) {
+        document.getElementById('message').textContent = 'unable to find the word!';
+      }
       return response.json();
     })
     .then(function (data) {
       console.log(data);
+    })
+    .catch(function (error) {
+      document.getElementById('message').textContent = 'unable to find the word!';
     });
 } 
 //This function fetches the antonyms
@@ -110,33 +146,19 @@ var getWordAntonym = function(searchWord) {
   
   fetch('https://wordsapiv1.p.rapidapi.com/words/' + searchWord + '/antonyms', options)
     .then(function (response) {
+      if (response.status !== 200) {
+        document.getElementById('message').textContent = 'unable to find the word!';
+      }
       return response.json();
     })
     .then(function (data) {
       console.log(data);
+    })
+    .catch(function (error) {
+      document.getElementById('message').textContent = 'unable to find the word!';
     });
 } 
-//This function prints results on the html page
-function printResults(resultObj) {
-  //setting up divs to hold the results content
-  var row = document.querySelector(".row");
 
-  var resultBody = document.createElement("div");
-  resultBody.classList.add(
-    "card-body",
-    "bg-light",
-    "text-dark",
-    "col",
-    "s12",
-    "m12",
-    "l8"
-  );
-  row.append(resultBody);
-
-  var titleEl = document.createElement("h3");
-  titleEl.textContent = resultObj.title;
-
-}
 
 //This function handles the search form
 function handleSearchFormSubmit(event) {
