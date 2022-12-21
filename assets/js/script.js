@@ -2,19 +2,19 @@ var APIKey = "22vwvUYuN4pRHPAeG9YOHXN8r48eEaWa";
 var giphyAPIKey = "04MTGqYDpxd8HuhMqVSJBUSZxRc5dOUp"; //Giphy API key
 
 
-const settings = {
-	"async": true,
-	"crossDomain": true,
-	"url": "https://wordsapiv1.p.rapidapi.com/words/%7Bword%7D",
-    "url": "https://wordsapiv1.p.rapidapi.com/words/%7Bword%7D/definitions",
-    "url": "https://wordsapiv1.p.rapidapi.com/words/%7Bword%7D/antonyms",
-    "url": "https://wordsapiv1.p.rapidapi.com/words/%7Bword%7D/synonyms",
-    "method": "GET",
-	"headers": {
-		"X-RapidAPI-Key": "b9edf3508bmsh866b047a7c975fcp113037jsnb3ff5029ee75",
-		"X-RapidAPI-Host": "wordsapiv1.p.rapidapi.com"
-	}
-};
+// const settings = {
+// 	"async": true,
+// 	"crossDomain": true,
+// 	"url": "https://wordsapiv1.p.rapidapi.com/words/%7Bword%7D",
+//     "url": "https://wordsapiv1.p.rapidapi.com/words/%7Bword%7D/definitions",
+//     "url": "https://wordsapiv1.p.rapidapi.com/words/%7Bword%7D/antonyms",
+//     "url": "https://wordsapiv1.p.rapidapi.com/words/%7Bword%7D/synonyms",
+//     "method": "GET",
+// 	"headers": {
+// 		"X-RapidAPI-Key": "b9edf3508bmsh866b047a7c975fcp113037jsnb3ff5029ee75",
+// 		"X-RapidAPI-Host": "wordsapiv1.p.rapidapi.com"
+// 	}
+// };
 
 /*
 $.ajax(settings).done(function (response) {
@@ -34,6 +34,9 @@ var searchFormEl = document.querySelector("#search-form");
 search = function (w) {
 
   var gifs = getGiphys(w);
+  var definition = getWordDefinition(w);
+  var synonyms = getWordSynonym(w);
+  var antonyms = getWordAntonym(w);
 
 }
 
@@ -54,12 +57,65 @@ getGiphys = function (searchWord) {
   })
   .then(function (data) {
     console.log(data);
-    gifs = data;
+    gifs = data.url;
   })
 
    return gifs;
 }
-
+// This function gets the definition
+var getWordDefinition = function(searchWord) {
+  const options = {
+    method: 'GET',
+    headers: {
+      'X-RapidAPI-Key': "b9edf3508bmsh866b047a7c975fcp113037jsnb3ff5029ee75",
+      'X-RapidAPI-Host': 'wordsapiv1.p.rapidapi.com'
+    }
+  };
+  
+  fetch('https://wordsapiv1.p.rapidapi.com/words/' + searchWord + '/definitions', options)
+    .then(function (response) {
+      return response.json();
+    })
+    .then(function (data) {
+      console.log(data);
+    });
+} 
+//This function gets the synonyms
+var getWordSynonym = function(searchWord) {
+  const options = {
+    method: 'GET',
+    headers: {
+      'X-RapidAPI-Key': "b9edf3508bmsh866b047a7c975fcp113037jsnb3ff5029ee75",
+      'X-RapidAPI-Host': 'wordsapiv1.p.rapidapi.com'
+    }
+  };
+  
+  fetch('https://wordsapiv1.p.rapidapi.com/words/' + searchWord + '/synonyms', options)
+    .then(function (response) {
+      return response.json();
+    })
+    .then(function (data) {
+      console.log(data);
+    });
+} 
+//This function fetches the antonyms
+var getWordAntonym = function(searchWord) {
+  const options = {
+    method: 'GET',
+    headers: {
+      'X-RapidAPI-Key': "b9edf3508bmsh866b047a7c975fcp113037jsnb3ff5029ee75",
+      'X-RapidAPI-Host': 'wordsapiv1.p.rapidapi.com'
+    }
+  };
+  
+  fetch('https://wordsapiv1.p.rapidapi.com/words/' + searchWord + '/antonyms', options)
+    .then(function (response) {
+      return response.json();
+    })
+    .then(function (data) {
+      console.log(data);
+    });
+} 
 //This function prints results on the html page
 function printResults(resultObj) {
   //setting up divs to hold the results content
