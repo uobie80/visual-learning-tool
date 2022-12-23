@@ -106,6 +106,8 @@ var getWordDefinition = function(searchWord) {
       var wordDefinition = data.definitions;
       var wordDisplay = document.getElementById('word');
       var definitionDis = document.getElementById('list');
+      definitionDis.innerHTML='';
+      wordDisplay.innerHTML = '';
       wordDisplay.textContent = wordTitle;
       
 
@@ -141,6 +143,7 @@ var getWordSynonym = function(searchWord) {
       console.log(data);
       var synonymData = data.synonyms;
       var displaySynonyms = document.getElementById('synonyms');
+      displaySynonyms.innerHTML='';
 
       for (var x=0; x<synonymData.length; x++) {
         var listSynonym = document.createElement('li');
@@ -175,6 +178,7 @@ var getWordAntonym = function(searchWord) {
       console.log(data);
       var antonymData = data.antonyms;
       var displayAntonyms = document.getElementById('antonyms');
+      displayAntonyms.innerHTML='';
 
       for (var x=0; x<antonymData.length; x++) {
         var listAntonym = document.createElement('li');
