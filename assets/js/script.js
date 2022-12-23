@@ -31,32 +31,21 @@ object.onclick = function(){
 var searchFormEl = document.querySelector("#search-form");
 
 
-search = function (w) {
+/* printDetails = function () {
 
-  var gifs = getGiphys(w);
+   var gifs = getGiphys(w);
   var definition = getWordDefinition(w);
   var synonyms = getWordSynonym(w);
-  var antonyms = getWordAntonym(w);
+  var antonyms = getWordAntonym(w); 
 
    //setting up divs to hold the results content
-   var row = document.querySelector(".row");
-
-   var resultBody = document.createElement("div");
-   resultBody.classList.add(
-     "card-body",
-     "bg-light",
-     "text-dark",
-     "col",
-     "s12",
-     "m12",
-     "l8"
-   );
-   row.append(resultBody);
+  var resultsCont = document.getElementById('result-content');
  
    var titleEl = document.createElement("h3");
-   titleEl.textContent = resultObj.title;
+   titleEl.textContent = gifs;
+   
 
-}
+} */
 
 getGiphys = function (searchWord) {
  
@@ -67,9 +56,11 @@ getGiphys = function (searchWord) {
   window.event.preventDefault();
 
   var requestUrl = "https://api.giphy.com/v1/gifs/search?api_key=" + giphyAPIKey + "&q=" + searchWord + "&limit=1&offset=0&rating=g&lang=en"
-  var gifs = null;
   
-  fetch(requestUrl)
+  
+  fetch(requestUrl, {
+    credential: 'same-origin',
+  })
   .then(function (response){
     if (response.status !== 200) {
       document.getElementById('message').textContent = 'unable to find the word!';
@@ -78,18 +69,24 @@ getGiphys = function (searchWord) {
   })
   .then(function (data) {
     console.log(data);
-    gifs = data.url;
+    var gifs = data.data[0].images.downsized.url;
+    var title = data.data[0].title;
+
+    var gifImage = document.getElementById('gifs');
+   /*  var wordDisplay = document.getElementById('word'); */
+    gifImage.setAttribute('src', gifs);
+    gifImage.setAttribute('alt', title);
+    /* wordDisplay.textContent = title; */
   })
   .catch(function (error) {
     document.getElementById('message').textContent = 'unable to find the word!';
   })
-
-   return gifs;
 }
 // This function gets the definition
 var getWordDefinition = function(searchWord) {
   const options = {
     method: 'GET',
+    credential: 'same-origin',
     headers: {
       'X-RapidAPI-Key': "b9edf3508bmsh866b047a7c975fcp113037jsnb3ff5029ee75",
       'X-RapidAPI-Host': 'wordsapiv1.p.rapidapi.com'
@@ -105,6 +102,18 @@ var getWordDefinition = function(searchWord) {
     })
     .then(function (data) {
       console.log(data);
+      var wordTitle = data.word;
+      var wordDefinition = data.definitions;
+      var wordDisplay = document.getElementById('word');
+      var definitionDis = document.getElementById('list');
+      wordDisplay.textContent = wordTitle;
+      
+
+      for (var x=0; x<wordDefinition.length; x++) {
+        var listDefine = document.createElement('li');
+        definitionDis.append(listDefine);
+        listDefine.innerHTML = wordDefinition[x].definition;
+      }
     })
     .catch(function (error) {
       document.getElementById('message').textContent = 'unable to find the word!';
@@ -114,6 +123,7 @@ var getWordDefinition = function(searchWord) {
 var getWordSynonym = function(searchWord) {
   const options = {
     method: 'GET',
+    credential: 'same-origin',
     headers: {
       'X-RapidAPI-Key': "b9edf3508bmsh866b047a7c975fcp113037jsnb3ff5029ee75",
       'X-RapidAPI-Host': 'wordsapiv1.p.rapidapi.com'
@@ -129,6 +139,15 @@ var getWordSynonym = function(searchWord) {
     })
     .then(function (data) {
       console.log(data);
+      var synonymData = data.synonyms;
+      var displaySynonyms = document.getElementById('synonyms');
+
+      for (var x=0; x<synonymData.length; x++) {
+        var listSynonym = document.createElement('li');
+        displaySynonyms.append(listSynonym);
+        listSynonym.innerHTML = synonymData[x];
+      }
+
     })
     .catch(function (error) {
       document.getElementById('message').textContent = 'unable to find the word!';
@@ -138,6 +157,7 @@ var getWordSynonym = function(searchWord) {
 var getWordAntonym = function(searchWord) {
   const options = {
     method: 'GET',
+    credential: 'same-origin',
     headers: {
       'X-RapidAPI-Key': "b9edf3508bmsh866b047a7c975fcp113037jsnb3ff5029ee75",
       'X-RapidAPI-Host': 'wordsapiv1.p.rapidapi.com'
@@ -153,6 +173,14 @@ var getWordAntonym = function(searchWord) {
     })
     .then(function (data) {
       console.log(data);
+      var antonymData = data.antonyms;
+      var displayAntonyms = document.getElementById('antonyms');
+
+      for (var x=0; x<antonymData.length; x++) {
+        var listAntonym = document.createElement('li');
+        displayAntonyms.append(listAntonym);
+        listAntonym.innerHTML = antonymData[x];
+      }
     })
     .catch(function (error) {
       document.getElementById('message').textContent = 'unable to find the word!';
@@ -171,7 +199,10 @@ function handleSearchFormSubmit(event) {
       "Please Enter a word!";
     return;
   }
-  search(searchInputVal);
+  getWordAntonym(searchInputVal);
+  getWordDefinition(searchInputVal);
+  getWordSynonym(searchInputVal);
+  getGiphys(searchInputVal);
 }
 
 searchFormEl.addEventListener("submit", handleSearchFormSubmit);
