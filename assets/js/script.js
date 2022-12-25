@@ -47,7 +47,7 @@ var searchFormEl = document.querySelector("#search-form");
 
 } */
 
-getGiphys = function (searchWord) {
+var getGiphys = function (searchWord) {
  
   /* 
     This function uses the Giphy API to fetch gifs related to search term

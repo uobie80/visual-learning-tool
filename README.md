@@ -20,7 +20,7 @@ THEN I want to see a visual representation to assist in memorization
 
 ## Page Mock-Up
 
-![Alt text](../visual-learning-tool/assets/images/landing-page-mock-up-01.png?raw=true "Visual Learning Tool Site")
+![Alt text](assets/images/landing-page-mock-up-01.png?raw=true "Visual Learning Tool Site")
 
 
 ## Link to Visual Learning Tool Site
