@@ -47,7 +47,7 @@ var searchFormEl = document.querySelector("#search-form");
 
 } */
 
-getGiphys = function (searchWord) {
+var getGiphys = function (searchWord) {
  
   /* 
     This function uses the Giphy API to fetch gifs related to search term
@@ -84,6 +84,10 @@ getGiphys = function (searchWord) {
 }
 // This function gets the definition
 var getWordDefinition = function(searchWord) {
+  var searchWordDefinitionEl1 = document.querySelector('#search-word-definition');
+
+  searchWordDefinitionEl1.textContent = "Definitions of " + searchWord;
+
   const options = {
     method: 'GET',
     credential: 'same-origin',
@@ -123,6 +127,11 @@ var getWordDefinition = function(searchWord) {
 } 
 //This function gets the synonyms
 var getWordSynonym = function(searchWord) {
+
+  var searchWordSynonymEl1 = document.querySelector('#search-word-synonym');
+
+  searchWordSynonymEl1.textContent = "Synonyms";
+
   const options = {
     method: 'GET',
     credential: 'same-origin',
@@ -158,6 +167,11 @@ var getWordSynonym = function(searchWord) {
 } 
 //This function fetches the antonyms
 var getWordAntonym = function(searchWord) {
+
+  var searchWordAntonymEl1 = document.querySelector('#search-word-antonym');
+
+  searchWordAntonymEl1.textContent = "Antonyms";
+
   const options = {
     method: 'GET',
     credential: 'same-origin',
