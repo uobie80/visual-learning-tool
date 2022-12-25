@@ -84,6 +84,10 @@ var getGiphys = function (searchWord) {
 }
 // This function gets the definition
 var getWordDefinition = function(searchWord) {
+  var searchWordEl1 = document.querySelector('#search-word');
+
+  searchWordEl1.textContent = searchWord;
+  
   const options = {
     method: 'GET',
     credential: 'same-origin',
