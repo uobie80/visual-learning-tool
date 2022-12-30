@@ -19,35 +19,19 @@
   <body class="grey darken-2">
     <nav class="teal lighten-2">
       <div class="nav-wrapper">
-        <a href="#!" class="brand-logo"
+        <a href="#!" class="center brand-logo"
           ><span class="custom-text"
             ><strong>Visual-Learning-Tool</strong></span
           ></a
         >
-        <ul class="right hide-on-med-and-down">
-          <li>
-            <a href="sass.html"><i class="material-icons">search</i></a>
-          </li>
-          <li>
-            <a href="badges.html"><i class="material-icons">view_module</i></a>
-          </li>
-          <li>
-            <a href="collapsible.html"><i class="material-icons">refresh</i></a>
-          </li>
-          <li>
-            <a href="mobile.html"><i class="material-icons">more_vert</i></a>
-          </li>
-        </ul>
       </div>
     </nav>
 
-   <!--  <div class="background-img responsive-img"></div>  -->
+    <!--  <div class="background-img responsive-img"></div>  -->
     <main class="container">
       <div class="row">
-       
         <div class="col s12 m12 l4">
-
-          <div class="card vertical ">
+          <div class="card vertical custom-box">
             <header class="teal lighten-2">
               <h5>Pic's Worth 1K Gif's worth 10k</h5>
             </header>
@@ -60,40 +44,37 @@
                     type="text"
                     placeholder="Enter a Word!"
                   />
-                 <button id="search-btn">SEARCH</button>
+                  <button id="search-btn">SEARCH</button>
                 </form>
-                <hr>
+                <hr />
                 <div id="message"></div>
               </div>
             </div>
-  
           </div>
-           
         </div>
-          <!-- image card section -->
-          
-          <div class="col s12 m7">
-            <div class="card">
-              <div class="card-image">
-                <img id="gifs">
-                <!-- <iframe  width="480" height="258" frameBorder="0" class="giphy-embed" allowFullScreen></iframe><p><a href="https://giphy.com/gifs/nhl-sports-hockey-chris-kreider-vnTkUq2wpDyFNwWtII">via GIPHY</a></p> -->
-                <span id="word" class="card-title">Card Title</span>
-              </div>
-              <div id="result-content" class="card-content">
-                <p><h5><span id="search-word-definition"></span></h5><ol id="list"></ol></p>
-                <p><h5><span id="search-word-antonym"></span></h5><ol id="antonyms"></ol></p>
-                <p><h5><span id="search-word-synonym"></span></h5><ol id="synonyms"></ol></p>
-              </div>
+        <!-- image card section -->
+
+        <div id="results" class="col s12 m12 l8 hide">
+          <div class="card">
+            <div class="card-image">
+              <img id="gifs" />
+              <span id="word" class="card-title"></span>
+            </div>
+            <div id="result-content" class="card-content">
+              <h5><span id="search-word-definition"></span></h5>
+              <ol id="list"></ol>
+
+              <h5><span id="search-word-antonym"></span></h5>
+              <ol id="antonyms"></ol>
+
+              <h5><span id="search-word-synonym"></span></h5>
+              <ol id="synonyms"></ol>
             </div>
           </div>
-       
-        <!--End of image card section -->
-           
-        
-       
-      </div>
-               
+        </div>
 
+        <!--End of image card section -->
+      </div>
     </main>
     <script src="./assets/js/script.js"></script>
   </body>

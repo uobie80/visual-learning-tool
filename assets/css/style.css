@@ -2,39 +2,38 @@
 body {
   min-height: 100vh;
 }
-
-/*aligning the contents in the card container to the centre of the page*/
-.custom-align {
-  display: flex;
-  flex-direction: column;
-  margin: 0;
-  position: absolute;
-  top: 0%;
-  left: 0%;
-  -ms-transform: translateY(-50%);
-  transform: translateY(100%);
-  
+/* Custom CSS for positioning the search box*/
+.custom-box {
+  position: fixed;
+  top: 10;
+  left: 0;
 }
 
-.custom-align header {
-  position: relative;
-  justify-content: left;
-  margin-top: -70px;
-  padding: 5px;
-  border: 1px solid black;
-  font-size: 150%;
-  border-radius: 8px;
-  transition: all 0.5s ease-in-out;
+@keyframes example {
+  0%   {color: red;}
+  25%  {color: yellow;}
+  50%  {color: blue;}
+  100% {color: black;}
 }
+
 /*changing text color*/
 .custom-text {
   color: black;
+  animation-name: example;
+  animation-duration: 4s;
+  animation-iteration-count: infinite;
 }
 /*background image*/
 .background-img {
-    width: 100%;
-    height: 100vh;
-    background-image: url("../images/gif-word-made-square-letter-tiles-turquoise-background-209011788.jpg");
-    background-size: cover;
-    background-position: center;
+  width: 100%;
+  height: 100vh;
+  background-image: url("../images/gif-word-made-square-letter-tiles-turquoise-background-209011788.jpg");
+  background-size: cover;
+  background-position: center;
+}
+
+@media screen and (max-width: 992px) {
+  .custom-box {
+    position: relative;
+  }
 }
