@@ -217,6 +217,8 @@ function handleSearchFormSubmit(event) {
       "Please Enter a word!";
     return;
   }
+  var results = document.getElementById('results');
+  results.classList.remove('hide');
   getWordAntonym(searchInputVal);
   getWordDefinition(searchInputVal);
   getWordSynonym(searchInputVal);
