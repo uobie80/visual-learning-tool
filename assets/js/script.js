@@ -1,12 +1,32 @@
 var giphyAPIKey = "04MTGqYDpxd8HuhMqVSJBUSZxRc5dOUp"; //Giphy API key
 var wordsAPIKey = "b9edf3508bmsh866b047a7c975fcp113037jsnb3ff5029ee75"
 
+<<<<<<< Updated upstream
 
 search = function (w) {
+=======
+var searchFormEl = document.querySelector("#search-form");
+
+>>>>>>> Stashed changes
 
   var gifs = getGiphys(w);
 
+<<<<<<< Updated upstream
 }
+=======
+   var gifs = getGiphys(w);
+  var definition = getWordDefinition(w);
+  var synonyms = getWordSynonym(w);
+  var antonyms = getWordAntonym(w); 
+
+   //setting up divs to hold the results content
+  var resultsCont = document.getElementById('result-content');
+ 
+   var titleEl = document.createElement("h3");
+   titleEl.textContent = gifs;
+
+} */
+>>>>>>> Stashed changes
 
 getGiphys = function (searchWord) {
  
