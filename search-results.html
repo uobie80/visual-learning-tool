@@ -5,13 +5,18 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link
+      href="https://fonts.googleapis.com/icon?family=Material+Icons"
+      rel="stylesheet"
+    />
+    <link
       rel="stylesheet"
       href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css"
     />
     <link rel="stylesheet" href="./assets/css/style.css" />
-    <title>Visual-Learning-Tool</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script>
+    <title>Visual Learning Tool</title>
   </head>
-  <body>
+  <body class="grey darken-2">
     <nav class="teal lighten-2">
       <div class="nav-wrapper">
         <a href="#!" class="center brand-logo"
@@ -21,18 +26,12 @@
         >
       </div>
     </nav>
-    <div class="container">
-      <div class="row">
-        <div class="col s12 m12 l12">
-          <div class="card vertical">
-            <div class="center">
-              <img
-                class="responsive-img"
-                src="./assets/images/sample-1.jpg"
-                alt="image of nature with trees and a large river flowing"
-              />
-            </div>
 
+    <!--  <div class="background-img responsive-img"></div>  -->
+    <main class="container">
+      <div class="row">
+        <div class="col s12 m12 l4">
+          <div class="card vertical custom-box">
             <header class="teal lighten-2">
               <h5>Pic's Worth 1K Gif's worth 10k</h5>
             </header>
@@ -46,6 +45,7 @@
                     placeholder="Enter a Word!"
                   />
                   <button id="search-btn">SEARCH</button>
+                  <a href="./index.html" class="right">&larr; Go back.</a>
                 </form>
                 <hr />
                 <div id="message"></div>
@@ -53,8 +53,30 @@
             </div>
           </div>
         </div>
+        <!-- image card section -->
+
+        <div id="results" class="col s12 m12 l8 hide">
+          <div class="card">
+            <div class="card-image">
+              <img id="gifs" />
+              <span id="word" class="card-title"></span>
+            </div>
+            <div id="result-content" class="card-content">
+              <h5><span id="search-word-definition"></span></h5>
+              <ol id="list"></ol>
+
+              <h5><span id="search-word-antonym"></span></h5>
+              <ol id="antonyms"></ol>
+
+              <h5><span id="search-word-synonym"></span></h5>
+              <ol id="synonyms"></ol>
+            </div>
+          </div>
+        </div>
+
+        <!--End of image card section -->
       </div>
-    </div>
-    <script src="./assets/js/script.js"></script>
+    </main>
+    <script src="./assets/js/display-search.js"></script>
   </body>
 </html>
