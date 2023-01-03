@@ -37,3 +37,17 @@ body {
     position: relative;
   }
 }
+
+/* Header background color */
+
+.header-title {
+  border: .5em solid #66CDAA;
+  background-color:#66CDAA;
+  display: block;
+  
+}
+
+/* orderd list background color */
+.card-content ol {
+  background-color: #F0F8FF;
+}
